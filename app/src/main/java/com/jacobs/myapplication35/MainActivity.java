@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.widget.TableLayout;
 
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -16,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        AppBarLayout toolbar = (AppBarLayout) findViewById(R.id.appbarid);
+
 
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
