@@ -3,13 +3,19 @@ package com.jacobs.myapplication35;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+
 import androidx.viewpager.widget.ViewPager;
 
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.View;
 import android.widget.TableLayout;
 
 import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         AppBarLayout toolbar = (AppBarLayout) findViewById(R.id.appbarid);
-
 
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -54,5 +59,11 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+
+    public void change(View v){
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.root_frame, new Frag3()).addToBackStack(null).commit();
     }
 }

@@ -27,9 +27,9 @@ public  class  ViewPagerAdapter  extends  FragmentPagerAdapter {
          * a container for other fragments
          */
         if (position == 0)
-            return new RootFrag();
-        else
             return new Frag2();
+        else
+            return new RootFrag();
     }
 
 

@@ -10,6 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 
 public  class  Frag1  extends  Fragment {
 
@@ -21,9 +24,11 @@ public  class  Frag1  extends  Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.frag1, container, false);
 
-        Button btn = (Button) view.findViewById(R.id.btn);
+        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
 
-        btn.setOnClickListener(new View.OnClickListener() {
+
+        fab.setOnClickListener(new View.OnClickListener() {
+
 
             @Override
             public void onClick(View v) {
@@ -33,6 +38,7 @@ public  class  Frag1  extends  Fragment {
                  * IMPORTANT: We use the "root frame" defined in
                  * "root_fragment.xml" as the reference to replace fragment
                  */
+
                 trans.replace(R.id.root_frame, new Frag3());
 
                 /*
