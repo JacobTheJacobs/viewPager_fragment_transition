@@ -3,11 +3,13 @@ package com.jacobs.myapplication35;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
 
 
 import androidx.viewpager.widget.ViewPager;
 
+import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -61,9 +63,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+
+        if(menu instanceof MenuBuilder){
+            MenuBuilder m = (MenuBuilder) menu;
+            m.setOptionalIconsVisible(true);
+        }
         return true;
     }
 
@@ -72,17 +80,26 @@ public class MainActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        if (id == R.id.my_activity) {
-            Intent intent1 = new Intent(this,MyActivity.class);
+        if (id == R.id.contact) {
+            Intent intent1 = new Intent(this,ContactActivity.class);
             this.startActivity(intent1);
             return true;
         }
 
+
+        if (id == R.id.share) {
+            Intent sendIntent = new Intent(Intent.ACTION_SEND);
+            sendIntent.setType("text/plain");
+            sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
+            this.startActivity(sendIntent);
+            return true;
+        }
+/*
         if (id == R.id.settings) {
             Toast.makeText(this, "Setting", Toast.LENGTH_LONG).show();
             return true;
         }
-
+*/
         return super.onOptionsItemSelected(item);
     }
 }

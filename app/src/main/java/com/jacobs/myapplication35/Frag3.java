@@ -49,6 +49,8 @@ public  class Frag3 extends  Fragment{
 
         frag1View.setBackground(draw);
 
+        frag1View.getBackground().setAlpha(50);
+
         name_input = view.findViewById(R.id.name_input);
         text_input = view.findViewById(R.id.text_input);
 

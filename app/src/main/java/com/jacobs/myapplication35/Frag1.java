@@ -99,7 +99,8 @@ public  class  Frag1  extends  Fragment {
                 lyric_name.add(cursor.getString(1));
 
                 if(cursor.getString(2).length()>13){
-                    short_lyric_text.add(cursor.getString(2).substring(0,13)+"...");
+                    String field = cursor.getString(2).replaceAll("\n+", "");
+                    short_lyric_text.add(field.substring(0,13)+"...");
                 }else{
                     short_lyric_text.add(cursor.getString(2));
                 }

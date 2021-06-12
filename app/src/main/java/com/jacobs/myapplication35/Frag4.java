@@ -57,6 +57,7 @@ public  class Frag4 extends  Fragment{
         draw.setColor(Color.rgb(red,green,blue));
 
         frag4View.setBackground(draw);
+        frag4View.getBackground().setAlpha(50);
 
 
         name_input = view.findViewById(R.id.name_input2);
