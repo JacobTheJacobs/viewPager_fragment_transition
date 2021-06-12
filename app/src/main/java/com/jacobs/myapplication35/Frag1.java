@@ -1,8 +1,11 @@
 package com.jacobs.myapplication35;
 
 import android.database.Cursor;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,6 +26,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Random;
 
 
 public  class  Frag1  extends  Fragment {
@@ -32,7 +36,7 @@ public  class  Frag1  extends  Fragment {
     TextView no_data;
 
     MyDatabaseHelper myDB;
-    ArrayList<String> lyric_id, lyric_name, lyric_text, lyric_date;
+    ArrayList<String> lyric_id, lyric_name, lyric_text, lyric_date, short_lyric_text;
     RecyclerViewAdapter customAdapter;
 
     @Override
@@ -57,6 +61,9 @@ public  class  Frag1  extends  Fragment {
             }
         });
 
+
+
+
         recyclerView = view.findViewById(R.id.recyclerView);
         empty_imageview = view.findViewById(R.id.empty_imageview);
         no_data = view.findViewById(R.id.no_data);
@@ -66,12 +73,13 @@ public  class  Frag1  extends  Fragment {
         lyric_name = new ArrayList<>();
         lyric_text = new ArrayList<>();
         lyric_date = new ArrayList<>();
+        short_lyric_text = new ArrayList<>();
 
         storeDataInArrays();
 
         customAdapter = new RecyclerViewAdapter(getActivity(),getContext(),
                 lyric_id, lyric_name, lyric_text,
-                lyric_date);
+                lyric_date,short_lyric_text);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -90,12 +98,13 @@ public  class  Frag1  extends  Fragment {
                 lyric_id.add(cursor.getString(0));
                 lyric_name.add(cursor.getString(1));
 
-                if(cursor.getString(2).length()>10){
-
-                    lyric_text.add(cursor.getString(2).substring(0,10)+"...");
+                if(cursor.getString(2).length()>13){
+                    short_lyric_text.add(cursor.getString(2).substring(0,13)+"...");
                 }else{
-                    lyric_text.add(cursor.getString(2));
+                    short_lyric_text.add(cursor.getString(2));
                 }
+                    lyric_text.add(cursor.getString(2));
+
 
                 System.out.println(lyric_text);
                 String temp = cursor.getString(3);

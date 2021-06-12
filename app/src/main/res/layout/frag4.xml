@@ -11,10 +11,12 @@
     <EditText
         android:id="@+id/name_input2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
+        android:layout_height="34dp"
+        android:background="@drawable/back"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
         android:ems="10"
-        android:hint="Book Title"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,13 +25,19 @@
     <EditText
         android:id="@+id/text_input2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="Book Author"
-        android:inputType="textPersonName"
+        android:layout_height="324dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/back"
+
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:maxLines="1000"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+
         app:layout_constraintTop_toBottomOf="@+id/name_input2" />
 
 
@@ -41,6 +49,8 @@
         android:text="Update"
         android:textSize="20sp"
         android:textAllCaps="false"
+        android:background="@drawable/my_button"
+        app:backgroundTint='@color/fab'
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_input2" />
@@ -51,9 +61,11 @@
         android:layout_height="70dp"
         android:layout_marginTop="16dp"
         android:text="Delete"
+        android:background="@drawable/my_button"
         android:textAllCaps="false"
         android:textColor="@color/cardview_light_background"
         android:textSize="20sp"
+        app:backgroundTint='@color/fab'
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/update_button" />

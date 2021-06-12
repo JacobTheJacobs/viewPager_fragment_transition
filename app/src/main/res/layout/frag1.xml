@@ -1,16 +1,18 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/primary"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
     android:layout_height="match_parent"
 
->
+    >
 
     <TextView
         android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center_horizontal"
+        android:background="@color/primary"
         android:padding="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#fff"
@@ -25,6 +27,7 @@
         android:layout_marginBottom="56dp"
         android:clickable="true"
         android:focusable="true"
+        app:backgroundTint="@color/fab"
         android:src="@drawable/ic_baseline_add_24"
 
         />
@@ -32,9 +35,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="729dp"
-        android:paddingTop="?attr/actionBarSize"
-
+        android:layout_height="match_parent"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/white"
+        android:paddingBottom="10dp"
 
         />
 

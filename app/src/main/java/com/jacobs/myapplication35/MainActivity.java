@@ -1,6 +1,7 @@
 package com.jacobs.myapplication35;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
@@ -9,10 +10,13 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TableLayout;
+import android.widget.Toast;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -23,8 +27,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AppBarLayout toolbar = (AppBarLayout) findViewById(R.id.appbarid);
+       // AppBarLayout toolbar = (AppBarLayout) findViewById(R.id.appbarid);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
+        setSupportActionBar(toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
@@ -61,9 +67,22 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
-    public void change(View v){
-        getSupportFragmentManager().beginTransaction()
-                .add(R.id.root_frame, new Frag3()).addToBackStack(null).commit();
+        int id = item.getItemId();
+
+        if (id == R.id.my_activity) {
+            Intent intent1 = new Intent(this,MyActivity.class);
+            this.startActivity(intent1);
+            return true;
+        }
+
+        if (id == R.id.settings) {
+            Toast.makeText(this, "Setting", Toast.LENGTH_LONG).show();
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

@@ -18,7 +18,8 @@
             android:id="@+id/appbarid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true">
+            android:fitsSystemWindows="true"
+            android:background="@color/primary2">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
                 android:id="@+id/collapsingToolbarLayout"
@@ -31,11 +32,19 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="45dp"
+                    android:layout_height="54dp"
                     android:padding="10dp"
                     android:src="@drawable/img"
                     app:layout_collapseMode="parallax" />
 
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:layout_collapseMode="pin"
+                    android:fitsSystemWindows="true"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -48,7 +57,7 @@
                 android:elevation="6dp"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:tabIndicatorColor="@android:color/white"
+                app:tabIndicatorColor="@color/fab"
                 app:tabTextColor="@color/white" />
 
         </com.google.android.material.appbar.AppBarLayout>

@@ -10,8 +10,17 @@
 
 
     <color name="primary">#03A9F4</color>
-    <color name="primaryDark">#0288D1</color>
+    <color name="primary2">#039BE5</color>
     <color name="accent">#FF4081</color>
 
+
+
+    <color name="first">#F2C249</color>
+    <color name="second">#E6772E</color>
+    <color name="third">#4DB3B3</color>
+    <color name="forth">#E64A45</color>
+    <color name="fiveth">#3D4C53</color>
+    <color name="sixth">#FFFFFFFF</color>
+    <color name="fab">#EF5350</color>
 
 </resources>

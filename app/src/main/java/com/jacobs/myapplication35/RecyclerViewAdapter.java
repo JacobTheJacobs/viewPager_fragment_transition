@@ -1,5 +1,7 @@
 package com.jacobs.myapplication35;
 
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -18,6 +20,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -30,17 +33,19 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private Context context;
     private Activity activity;
-    private ArrayList lyric_id, lyric_name, lyric_text, lyric_date;
+    private ArrayList lyric_id, lyric_name, lyric_text, lyric_date,short_lyric_text;
+
 
     RecyclerViewAdapter(Activity activity, Context context,
                         ArrayList book_id, ArrayList lyric_name,
-                        ArrayList lyric_text, ArrayList lyric_date){
+                        ArrayList lyric_text, ArrayList lyric_date,ArrayList short_lyric_text){
         this.activity = activity;
         this.context = context;
         this.lyric_id = book_id;
         this.lyric_name = lyric_name;
         this.lyric_text = lyric_text;
         this.lyric_date = lyric_date;
+        this.short_lyric_text = short_lyric_text;
     }
 
     @NonNull
@@ -60,8 +65,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public void onBindViewHolder(@NonNull final MyViewHolder holder, final int position) {
         holder.lyric_id_txt.setText(String.valueOf(lyric_id.get(position)));
         holder.lyric_name_txt.setText(String.valueOf(lyric_name.get(position)));
-        holder.lyric_text_txt.setText(String.valueOf(lyric_text.get(position)));
+        holder.lyric_text_txt.setText(String.valueOf(short_lyric_text.get(position)));
         holder.lyric_date_txt.setText(String.valueOf(lyric_date.get(position)));
+        setAnimation(holder.itemView, position);
         //Recyclerview onClickListener
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,6 +109,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         TextView lyric_id_txt, lyric_name_txt, lyric_text_txt, lyric_date_txt;
         LinearLayout mainLayout;
+        CardView cardView;
 
 
         MyViewHolder(@NonNull View itemView) {
@@ -112,7 +119,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             lyric_text_txt = itemView.findViewById(R.id.lyric_text);
             lyric_date_txt = itemView.findViewById(R.id.lyric_date);
             mainLayout = itemView.findViewById(R.id.mainLayout);
-
+            cardView = itemView.findViewById(R.id.cardView);
 
             Random mRandom = new Random();
              int baseColor = Color.WHITE;
@@ -126,10 +133,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
              int blue = (baseBlue + mRandom.nextInt(256)) / 2;
 
             GradientDrawable draw = new GradientDrawable();
-            draw.setShape(GradientDrawable.RECTANGLE);
+
             draw.setColor(Color.rgb(red,green,blue));
 
-            lyric_id_txt.setBackground(draw);
+            cardView.setBackground(draw);
 
 
             //Animate Recyclerview
@@ -139,6 +146,21 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     }
 
+
+    private void setAnimation(View itemView, int i) {
+        boolean isNotFirstItem = i == -1;
+        i++;
+        itemView.setAlpha(0.f);
+        AnimatorSet animatorSet = new AnimatorSet();
+        ObjectAnimator animator = ObjectAnimator.ofFloat(itemView, "alpha", 0.f, 0.5f, 1.0f);
+        ObjectAnimator.ofFloat(itemView, "alpha", 0.f).start();
+        animator.setStartDelay(isNotFirstItem ? 500 / 2 : (i * 500 / 3));
+        animator.setDuration(500);
+        animatorSet.play(animator);
+        animator.start();
+
+        /**/
+    }
 
 
 }

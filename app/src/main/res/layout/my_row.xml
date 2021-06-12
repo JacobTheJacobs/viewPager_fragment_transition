@@ -19,12 +19,9 @@
 
             <TextView
                 android:id="@+id/lyric_id_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="1"
-                android:textSize="40sp"
-                android:textStyle="bold"
-                android:textColor="#000"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:background="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -35,18 +32,21 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
-                android:text="Title 1"
+                android:text="Title "
+                android:textColor="#000"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:textColor="#000"
-                app:layout_constraintStart_toEndOf="@+id/lyric_id_txt"
-                app:layout_constraintTop_toTopOf="@+id/lyric_id_txt" />
+                app:layout_constraintBottom_toBottomOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/lyric_date"
+                app:layout_constraintVertical_bias="0.114" />
 
             <TextView
                 android:id="@+id/lyric_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Author1"
+                android:text="text"
                 app:layout_constraintStart_toStartOf="@+id/lyric_name_txt"
                 app:layout_constraintTop_toBottomOf="@+id/lyric_name_txt" />
 
@@ -54,7 +54,7 @@
                 android:id="@+id/lyric_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="120"
+                android:text="date"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

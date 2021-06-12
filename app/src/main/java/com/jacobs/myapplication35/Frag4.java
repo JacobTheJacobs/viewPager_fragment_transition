@@ -1,6 +1,8 @@
 package com.jacobs.myapplication35;
 
 import android.content.DialogInterface;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,7 +13,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+
+import java.util.Random;
 
 
 public  class Frag4 extends  Fragment{
@@ -34,11 +39,41 @@ public  class Frag4 extends  Fragment{
         View view = inflater.inflate(R.layout.frag4, container, false);
 
 
+        ConstraintLayout frag4View = view.findViewById(R.id.Frag4Layout);
+
+        Random mRandom = new Random();
+        int baseColor = Color.WHITE;
+
+        int baseRed = Color.red(baseColor);
+        int baseGreen = Color.green(baseColor);
+        int baseBlue = Color.blue(baseColor);
+
+        int red = (baseRed + mRandom.nextInt(256)) / 2;
+        int green = (baseGreen + mRandom.nextInt(256)) / 2;
+        int blue = (baseBlue + mRandom.nextInt(256)) / 2;
+
+        GradientDrawable draw = new GradientDrawable();
+
+        draw.setColor(Color.rgb(red,green,blue));
+
+        frag4View.setBackground(draw);
+
+
         name_input = view.findViewById(R.id.name_input2);
         text_input = view.findViewById(R.id.text_input2);
 
         update_button = view.findViewById(R.id.update_button);
         delete_button = view.findViewById(R.id.delete_button);
+
+        delete_button.setAlpha(0f);
+        delete_button.setTranslationY(50);
+        delete_button.animate().alpha(1f).translationYBy(-50).setDuration(2500);
+
+        update_button.setAlpha(0f);
+        update_button.setTranslationY(50);
+        update_button.animate().alpha(1f).translationYBy(-50).setDuration(1500);
+
+
 
         //First we call this
         savedInstanceState=this.getArguments();
