@@ -3,6 +3,8 @@ package com.jacobs.myapplication35;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,11 +18,13 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
 
@@ -44,6 +48,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.my_row, parent, false);
+
+
+
+
         return new MyViewHolder(view);
     }
 
@@ -82,6 +90,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         });
 
 
+
+
     }
 
     @Override
@@ -94,6 +104,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         TextView lyric_id_txt, lyric_name_txt, lyric_text_txt, lyric_date_txt;
         LinearLayout mainLayout;
 
+
         MyViewHolder(@NonNull View itemView) {
             super(itemView);
             lyric_id_txt = itemView.findViewById(R.id.lyric_id_txt);
@@ -101,11 +112,33 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             lyric_text_txt = itemView.findViewById(R.id.lyric_text);
             lyric_date_txt = itemView.findViewById(R.id.lyric_date);
             mainLayout = itemView.findViewById(R.id.mainLayout);
+
+
+            Random mRandom = new Random();
+             int baseColor = Color.WHITE;
+
+             int baseRed = Color.red(baseColor);
+             int baseGreen = Color.green(baseColor);
+             int baseBlue = Color.blue(baseColor);
+
+             int red = (baseRed + mRandom.nextInt(256)) / 2;
+             int green = (baseGreen + mRandom.nextInt(256)) / 2;
+             int blue = (baseBlue + mRandom.nextInt(256)) / 2;
+
+            GradientDrawable draw = new GradientDrawable();
+            draw.setShape(GradientDrawable.RECTANGLE);
+            draw.setColor(Color.rgb(red,green,blue));
+
+            lyric_id_txt.setBackground(draw);
+
+
             //Animate Recyclerview
             //Animation translate_anim = AnimationUtils.loadAnimation(context, R.anim.translate_anim);
            // mainLayout.setAnimation(translate_anim);
         }
 
     }
+
+
 
 }

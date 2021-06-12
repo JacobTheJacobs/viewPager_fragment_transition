@@ -89,12 +89,16 @@ public  class  Frag1  extends  Fragment {
             while (cursor.moveToNext()){
                 lyric_id.add(cursor.getString(0));
                 lyric_name.add(cursor.getString(1));
-                lyric_text.add(cursor.getString(2));
 
+                if(cursor.getString(2).length()>10){
 
-                System.out.println(cursor.getString(3));
+                    lyric_text.add(cursor.getString(2).substring(0,10)+"...");
+                }else{
+                    lyric_text.add(cursor.getString(2));
+                }
+
+                System.out.println(lyric_text);
                 String temp = cursor.getString(3);
-
                 SimpleDateFormat dateFormat = new SimpleDateFormat(
                         "yyyy-MM-dd HH:mm:ss", Locale.getDefault());
                 try {
