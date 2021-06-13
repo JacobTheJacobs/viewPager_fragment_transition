@@ -28,6 +28,9 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
     MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
+        SQLiteDatabase mydb = this.getWritableDatabase();
+        mydb.close();
+
     }
 
     @Override
@@ -38,11 +41,13 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
                 COLUMN_TEXT + " TEXT, " +
                 COLUMN_CREATED_ON + "  DATETIME DEFAULT CURRENT_TIMESTAMP);";
         db.execSQL(query);
+        db.close();
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
+
     }
 
     void addLyric(String title, String lyrics){
@@ -57,6 +62,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         }else {
             Toast.makeText(context, "Added Successfully!", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     Cursor readAllData(){
@@ -66,7 +72,9 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         if(db != null){
             cursor = db.rawQuery(query, null);
         }
+
         return cursor;
+
     }
 
     void updateData(String row_id, String title, String lyrics){
@@ -82,6 +90,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
         }
 
+
     }
 
     void deleteOneRow(String row_id){
@@ -92,11 +101,13 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         }else{
             Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
         }
+
     }
 
     void deleteAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("DELETE FROM " + TABLE_NAME);
+
     }
 
     private String getDateTime() {

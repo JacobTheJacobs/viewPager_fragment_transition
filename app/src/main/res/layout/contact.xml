@@ -9,7 +9,8 @@
     android:orientation="vertical">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="405dp">
+        android:layout_height="405dp"
+        app:backgroundTint="?attr/cardbackgroundcolor">
         <LinearLayout
 
             android:layout_width="match_parent"
@@ -28,16 +29,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Jacob Yanov"
-                android:textColor="@color/black"
+                android:textAppearance="?attr/tintcolor"
                 android:textStyle="bold"
-                android:textSize="21sp"/>
+                android:textSize="21sp"
+                />
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
             android:layout_width="400dp"
             android:layout_height="120dp"
+
             android:layout_centerHorizontal="true"
             android:layout_marginTop="275dp">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -55,6 +59,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="EMAIL"
+                        android:textAppearance="?attr/tintcolor"
                         android:textSize="20sp" />
 
                     <TextView
@@ -62,8 +67,9 @@
                         android:layout_height="58dp"
                         android:paddingTop="10dp"
                         android:text="JacobTheJacobs@gmail.com"
-                        android:textColor="@color/primary2"
+                        android:textColor="@color/primary"
                         android:textSize="20sp"
+                        android:textAppearance="?attr/textcolor"
                         android:textStyle="bold" />
 
                 </LinearLayout>
@@ -78,7 +84,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="45dp">
+        android:layout_marginTop="15dp">
         <LinearLayout
             android:orientation="horizontal"
             android:paddingLeft="25dp"
@@ -91,11 +97,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
+                android:textSize="17dp"
+                android:textAppearance="?attr/tintcolor"
                 android:text="For a songwriter, you don’t really go to songwriting school; you learn by listening to tunes. And you try to understand them and take them apart and see what they’re made of, and wonder if you can make one, too."/>
         </LinearLayout>
 
 
     </LinearLayout>
+
+
+    <Switch
+        android:id="@+id/simpleToggleButton"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="35dp"
+        android:layout_height="wrap_content"/>
 
     <Button
         android:textColor="#fff"

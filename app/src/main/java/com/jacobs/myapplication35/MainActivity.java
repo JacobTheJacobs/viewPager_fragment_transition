@@ -3,52 +3,87 @@ package com.jacobs.myapplication35;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
 
 
+
+import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.TableLayout;
-import android.widget.Toast;
 
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import android.widget.Switch;
+
+
 import com.google.android.material.tabs.TabLayout;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    private Switch mySwitch;
+
+
+
+
+    @Override
+    public void onBackPressed() {
+        int count = getSupportFragmentManager().getBackStackEntryCount();
+
+        boolean handled = false;
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.frag3View);
+        Fragment fragment4 = getSupportFragmentManager().findFragmentById(R.id.frag4View);
+        if (!(fragment instanceof IOnBackPressed) || !((IOnBackPressed) fragment).onBackPressed()) {
+            super.onBackPressed();
+            getSupportFragmentManager().popBackStack();
+        }else if(!(fragment4 instanceof IOnBackPressed) || !((IOnBackPressed) fragment4).onBackPressed()){
+            super.onBackPressed();
+            getSupportFragmentManager().popBackStack();
+        }else{
+
+        }
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+             setTheme(R.style.DARK);
+        } else{
+             setTheme(R.style.LIGHT);
+        }
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
        // AppBarLayout toolbar = (AppBarLayout) findViewById(R.id.appbarid);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
         tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
         tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
-
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
+
+
+
+
+        //VIEWPAGER
         final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-
-
         final ViewPagerAdapter adapter = new ViewPagerAdapter
                 (getSupportFragmentManager(), tabLayout.getTabCount());
-
-
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -61,7 +96,17 @@ public class MainActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+
+
+
+
+
+
+
     }
+
+
+
 
     @SuppressLint("RestrictedApi")
     @Override
@@ -72,6 +117,33 @@ public class MainActivity extends AppCompatActivity {
             MenuBuilder m = (MenuBuilder) menu;
             m.setOptionalIconsVisible(true);
         }
+
+        /*
+        MenuItem checkable = menu.findItem(R.id.myswitch);
+        Switch actionView=(Switch) MenuItemCompat.getActionView(checkable);
+
+        if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
+
+         actionView.setChecked(true);
+        }
+        actionView.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+              if(isChecked){
+
+                  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+
+              }else{
+
+                  AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+              }
+            }
+        });
+
+*/
+
         return true;
     }
 
@@ -94,6 +166,12 @@ public class MainActivity extends AppCompatActivity {
             this.startActivity(sendIntent);
             return true;
         }
+
+
+
+
+
+
 /*
         if (id == R.id.settings) {
             Toast.makeText(this, "Setting", Toast.LENGTH_LONG).show();

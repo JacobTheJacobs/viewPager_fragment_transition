@@ -1,73 +1,127 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Frag4"
-    android:padding="30dp"
-    android:id="@+id/Frag4Layout">
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".Frag3"
+    android:id="@+id/frag4View"
+    >
 
-    <EditText
-        android:id="@+id/name_input2"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="34dp"
-        android:background="@drawable/back"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent"
+        tools:context=".Frag3"
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/text_input2"
-        android:layout_width="match_parent"
-        android:layout_height="324dp"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/back"
-
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:maxLines="1000"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/name_input2" />
+        <EditText
+            android:id="@+id/name_input2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/back"
+            android:ems="10"
+            android:layout_marginTop="13dp"
+            android:hint="Song Name"
+            android:inputType="text"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="?attr/textcolor"
+            android:paddingBottom="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.55"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <Button
-        android:id="@+id/update_button"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="40dp"
-        android:text="Update"
-        android:textSize="20sp"
-        android:textAllCaps="false"
-        android:background="@drawable/my_button"
-        app:backgroundTint='@color/fab'
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_input2" />
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="6dp"
+            android:id="@+id/cardViewcreate"
+            >
 
-    <Button
-        android:id="@+id/delete_button"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_marginTop="16dp"
-        android:text="Delete"
-        android:background="@drawable/my_button"
-        android:textAllCaps="false"
-        android:textColor="@color/cardview_light_background"
-        android:textSize="20sp"
-        app:backgroundTint='@color/fab'
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/update_button" />
+            <LinearLayout
+                android:id="@+id/randomLyric"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:layout_weight="1"
+                android:background="@drawable/my_button"
+                android:backgroundTint="@color/second"
+                android:gravity="center"
+                android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_baseline_note_add_24" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+                android:background="@drawable/my_button"
+                android:backgroundTint="@color/primary">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_baseline_share_24"/>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/deleteButton"
+                android:backgroundTint="@color/accent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="35dp"
+                android:layout_marginRight="35dp"
+
+                android:background="@drawable/my_button">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:iconTint="?attr/tintcolor"
+                    android:background="@drawable/ic_baseline_delete_forever_24"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+        <EditText
+            android:id="@+id/text_input2"
+            android:layout_marginTop="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="644dp"
+            android:textColor="?attr/textcolor"
+            android:layout_weight="1"
+            android:background="@drawable/back"
+            android:gravity="top"
+            android:hint="You're Lyrics"
+            android:inputType="textMultiLine"
+            android:maxLines="300"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="10dp"
+            android:scrollbars="vertical" />
+
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

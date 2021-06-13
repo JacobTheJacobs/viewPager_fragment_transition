@@ -35,15 +35,28 @@ public  class  Frag1  extends  Fragment {
     ImageView empty_imageview;
     TextView no_data;
 
-    MyDatabaseHelper myDB;
+    MyDatabaseHelper myDB =null;
     ArrayList<String> lyric_id, lyric_name, lyric_text, lyric_date, short_lyric_text;
     RecyclerViewAdapter customAdapter;
+
+    boolean isBlack = false;
+
+
+    public static Frag1 newInstance() {
+        Frag1 homeFragment = new Frag1();
+        Bundle args = new Bundle();
+
+        homeFragment.setArguments(args);
+        return homeFragment;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.frag1, container, false);
+
+
 
         FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +76,6 @@ public  class  Frag1  extends  Fragment {
 
 
 
-
         recyclerView = view.findViewById(R.id.recyclerView);
         empty_imageview = view.findViewById(R.id.empty_imageview);
         no_data = view.findViewById(R.id.no_data);
@@ -79,9 +91,12 @@ public  class  Frag1  extends  Fragment {
 
         customAdapter = new RecyclerViewAdapter(getActivity(),getContext(),
                 lyric_id, lyric_name, lyric_text,
-                lyric_date,short_lyric_text);
+                lyric_date,short_lyric_text,isBlack);
         recyclerView.setAdapter(customAdapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
+
+
 
         return view;
     }

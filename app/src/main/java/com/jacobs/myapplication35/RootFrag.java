@@ -29,7 +29,10 @@ public class RootFrag extends Fragment {
 
         transaction.commit();
 
+
         return view;
     }
+
+
 
 }

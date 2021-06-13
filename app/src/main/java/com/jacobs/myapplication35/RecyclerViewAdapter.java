@@ -14,12 +14,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
@@ -34,11 +36,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private Context context;
     private Activity activity;
     private ArrayList lyric_id, lyric_name, lyric_text, lyric_date,short_lyric_text;
+     boolean isBlack;
 
 
     RecyclerViewAdapter(Activity activity, Context context,
                         ArrayList book_id, ArrayList lyric_name,
-                        ArrayList lyric_text, ArrayList lyric_date,ArrayList short_lyric_text){
+                        ArrayList lyric_text, ArrayList lyric_date,ArrayList short_lyric_text,boolean isBlack){
         this.activity = activity;
         this.context = context;
         this.lyric_id = book_id;
@@ -46,7 +49,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.lyric_text = lyric_text;
         this.lyric_date = lyric_date;
         this.short_lyric_text = short_lyric_text;
+        this.isBlack=isBlack;
     }
+
+
+
+    RecyclerViewAdapter(boolean isBlack){
+
+        this.isBlack=isBlack;
+
+    }
+
+
 
     @NonNull
     @Override
@@ -67,7 +81,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.lyric_name_txt.setText(String.valueOf(lyric_name.get(position)));
         holder.lyric_text_txt.setText(String.valueOf(short_lyric_text.get(position)));
         holder.lyric_date_txt.setText(String.valueOf(lyric_date.get(position)));
-        setAnimation(holder.itemView, position);
+      //  setAnimation(holder.itemView, position);
         //Recyclerview onClickListener
         holder.mainLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +135,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             mainLayout = itemView.findViewById(R.id.mainLayout);
             cardView = itemView.findViewById(R.id.cardView);
 
+
+
             Random mRandom = new Random();
              int baseColor = Color.WHITE;
 
@@ -132,11 +148,27 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
              int green = (baseGreen + mRandom.nextInt(256)) / 2;
              int blue = (baseBlue + mRandom.nextInt(256)) / 2;
 
-            GradientDrawable draw = new GradientDrawable();
 
-            draw.setColor(Color.rgb(red,green,blue));
+            if(AppCompatDelegate.getDefaultNightMode()==AppCompatDelegate.MODE_NIGHT_YES){
 
-            cardView.setBackground(draw);
+
+                GradientDrawable draw = new GradientDrawable();
+
+                draw.setColor(Color.rgb(red,green,blue));
+
+                cardView.setBackground(draw);
+                cardView.getBackground().setAlpha(0);
+
+            }else{
+
+                GradientDrawable draw = new GradientDrawable();
+
+                draw.setColor(Color.rgb(red,green,blue));
+
+                cardView.setBackground(draw);
+            }
+
+
 
 
             //Animate Recyclerview

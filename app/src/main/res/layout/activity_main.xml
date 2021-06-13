@@ -26,7 +26,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fitsSystemWindows="true"
-                app:contentScrim="?attr/colorPrimary"
+                android:background="?attr/backgroundcolor"
+                app:contentScrim="?attr/backgroundcolor"
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:titleEnabled="false">
 
@@ -57,7 +58,7 @@
                 android:elevation="6dp"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-                app:tabIndicatorColor="@color/fab"
+                app:tabIndicatorColor="?attr/fabcolor"
                 app:tabTextColor="@color/white" />
 
         </com.google.android.material.appbar.AppBarLayout>

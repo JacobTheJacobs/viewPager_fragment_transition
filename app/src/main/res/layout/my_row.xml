@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/mainLayout">
+    android:id="@+id/mainLayout"
+
+    >
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -21,6 +23,7 @@
                 android:id="@+id/lyric_id_txt"
                 android:layout_width="1dp"
                 android:layout_height="1dp"
+                android:textColor="?attr/textcolor"
                 android:background="@android:color/transparent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +36,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:text="Title "
-                android:textColor="#000"
+                android:textColor="?attr/textcolor"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -47,6 +50,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="text"
+                android:textColor="?attr/textcolor"
                 app:layout_constraintStart_toStartOf="@+id/lyric_name_txt"
                 app:layout_constraintTop_toBottomOf="@+id/lyric_name_txt" />
 
@@ -55,6 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="date"
+                android:textColor="?attr/textcolor"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
