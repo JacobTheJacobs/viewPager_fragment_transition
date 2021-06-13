@@ -35,19 +35,18 @@
 
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="6dp"
             android:id="@+id/cardViewcreate"
-            >
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/randomLyric"
+                android:id="@+id/randomButton"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"
                 android:layout_weight="1"
                 android:background="@drawable/my_button"
                 android:backgroundTint="@color/second"
@@ -57,47 +56,51 @@
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_baseline_note_add_24" />
-
+                    android:background="@drawable/ic_baseline_note_add_24"
+                    app:iconTint="?attr/tintcolor" />
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:gravity="center"
-                android:orientation="vertical"
-                android:layout_weight="1"
+                android:id="@+id/shareButton"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"
+                android:layout_weight="1"
                 android:background="@drawable/my_button"
-                android:backgroundTint="@color/primary">
+                android:backgroundTint="@color/third"
+                android:gravity="center"
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/ic_baseline_share_24"/>
+                    android:background="@drawable/ic_baseline_share_24"
+                    app:iconTint="?attr/tintcolor" />
 
             </LinearLayout>
 
 
             <LinearLayout
                 android:id="@+id/deleteButton"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"
+                android:layout_weight="1"
+                android:background="@drawable/my_button"
                 android:backgroundTint="@color/accent"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="50dp"
-                android:layout_marginLeft="35dp"
-                android:layout_marginRight="35dp"
 
-                android:background="@drawable/my_button">
+                android:orientation="vertical">
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:iconTint="?attr/tintcolor"
-                    android:background="@drawable/ic_baseline_delete_forever_24"/>
+                    android:background="@drawable/ic_baseline_delete_forever_24"
+                    app:iconTint="?attr/tintcolor" />
 
             </LinearLayout>
         </LinearLayout>
@@ -106,7 +109,7 @@
 
         <EditText
             android:id="@+id/text_input2"
-            android:layout_marginTop="15dp"
+
             android:layout_width="match_parent"
             android:layout_height="644dp"
             android:textColor="?attr/textcolor"

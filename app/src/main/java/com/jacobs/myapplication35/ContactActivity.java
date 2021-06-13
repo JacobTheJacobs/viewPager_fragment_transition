@@ -1,9 +1,12 @@
 package com.jacobs.myapplication35;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
@@ -20,7 +23,7 @@ public class ContactActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.contact);
-
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         Switch simpleToggleButton = (Switch) findViewById(R.id.simpleToggleButton); // initiate a toggle button
         Boolean ToggleButtonState = simpleToggleButton.isChecked();
@@ -34,6 +37,14 @@ public class ContactActivity extends AppCompatActivity {
             setTheme(R.style.LIGHT);
             simpleToggleButton.setChecked(false);
         }
+
+        Button contact = (Button)findViewById(R.id.contactButton);
+
+        contact.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                sendMessage();
+            }
+        });
 
 
         simpleToggleButton.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -59,7 +70,15 @@ public class ContactActivity extends AppCompatActivity {
     }
 
 
-
+public void sendMessage(){
+    try {
+        Intent telegram = new Intent(Intent.ACTION_VIEW, Uri.parse("https://t.me/bajaLemon"));
+        telegram.setPackage("org.telegram.messenger");
+        startActivity(telegram);
+    } catch (Exception e) {
+        Toast.makeText(this, "Telegram app is not installed", Toast.LENGTH_LONG).show();
+    }
+}
 
     public void restartApp(){
         Intent i = new Intent(this.getApplicationContext(),ContactActivity.class);

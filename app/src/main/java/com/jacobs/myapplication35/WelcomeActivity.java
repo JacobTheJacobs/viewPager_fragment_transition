@@ -19,6 +19,7 @@ public class WelcomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_screen);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         btnsub = (Button)findViewById(R.id.buttonsub);
         l1 = (LinearLayout) findViewById(R.id.l1);
         l2 = (LinearLayout) findViewById(R.id.l2);

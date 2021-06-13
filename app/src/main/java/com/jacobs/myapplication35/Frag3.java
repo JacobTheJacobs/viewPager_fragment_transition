@@ -1,6 +1,8 @@
 package com.jacobs.myapplication35;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -11,8 +13,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
@@ -30,6 +34,7 @@ public  class Frag3 extends  Fragment implements IOnBackPressed{
     // Declare Context variable at class level in Fragment
     private Context mContext;
     private FragmentManager fm;
+    LinearLayout delete_button,sharebutton,randomButton;
 
 
 
@@ -75,6 +80,9 @@ public  class Frag3 extends  Fragment implements IOnBackPressed{
         text_input = view.findViewById(R.id.text_input);
 
 
+        delete_button = view.findViewById(R.id.deleteButton2);
+        sharebutton=view.findViewById(R.id.shareButton2);
+        randomButton=view.findViewById(R.id.randomButton2);
 
 
 
@@ -100,6 +108,14 @@ public  class Frag3 extends  Fragment implements IOnBackPressed{
             text_input.getBackground().setAlpha(0);
             frag1View.setBackground(draw);
             frag1View.getBackground().setAlpha(0);
+            delete_button.getBackground().setAlpha(255);
+            delete_button.setBackground(draw);
+
+            sharebutton.getBackground().setAlpha(255);
+            sharebutton.setBackground(draw);
+
+            randomButton.getBackground().setAlpha(255);
+            randomButton.setBackground(draw);
 
         }else{
 
@@ -113,14 +129,21 @@ public  class Frag3 extends  Fragment implements IOnBackPressed{
 
 
 
-        LinearLayout randomLayotButton = (LinearLayout )view.findViewById(R.id.randomLyric);
 
-        randomLayotButton.setAlpha(0f);
-        randomLayotButton.setTranslationY(5);
-        randomLayotButton.animate().alpha(1f).translationYBy(-5).setDuration(300);
+        delete_button.setAlpha(0f);
+        delete_button.setTranslationY(5);
+        delete_button.animate().alpha(1f).translationYBy(-5).setDuration(300);
+
+        randomButton.setAlpha(0f);
+        randomButton.setTranslationY(5);
+        randomButton.animate().alpha(1f).translationYBy(-5).setDuration(300);
+
+        sharebutton.setAlpha(0f);
+        sharebutton.setTranslationY(5);
+        sharebutton.animate().alpha(1f).translationYBy(-5).setDuration(300);
 
 
-        randomLayotButton.setOnClickListener(new View.OnClickListener() {
+        randomButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -128,6 +151,31 @@ public  class Frag3 extends  Fragment implements IOnBackPressed{
             }
 
         });
+
+        delete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                confirmDialog();
+            }
+
+        });
+
+        sharebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent shareIntent =   new Intent(android.content.Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT,name_input.getText().toString());
+                String app_url = " https://play.google.com/store/apps/details?id=my.example.javatpoint";
+                if(text_input.getText().toString().length()>0){
+                    app_url=text_input.getText().toString();
+                }
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT,app_url);
+                startActivity(Intent.createChooser(shareIntent, "Share via"));
+            }
+        });
+
 
 /*
         add_button = view.findViewById(R.id.add_button);
@@ -176,7 +224,27 @@ randomLyric
     public void changefragment(){
 
         fm.popBackStack();
+        Toast.makeText(getContext(), " נמחק בהצלחה.", Toast.LENGTH_SHORT).show();
 
     }
 
+
+    void confirmDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+        builder.setTitle("למחוק " + name_input.getText().toString() + " ?");
+        builder.setMessage("בטוח למחוק את " + name_input.getText().toString() + " ?");
+        builder.setPositiveButton("כן", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                changefragment();
+            }
+        });
+        builder.setNegativeButton("לא", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.create().show();
+    }
 }

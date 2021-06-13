@@ -2,6 +2,7 @@ package com.jacobs.myapplication35;
 
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -30,7 +31,7 @@ public  class Frag4 extends  Fragment  implements IOnBackPressed{
 
 
     EditText name_input, text_input;
-    LinearLayout delete_button;
+    LinearLayout delete_button,sharebutton,randomButton;
 
     String id, name, lyric, updated_on;
 
@@ -63,8 +64,10 @@ public  class Frag4 extends  Fragment  implements IOnBackPressed{
         NestedScrollView frag4View = view.findViewById(R.id.frag4View);
         name_input = view.findViewById(R.id.name_input2);
         text_input = view.findViewById(R.id.text_input2);
-        delete_button = view.findViewById(R.id.deleteButton);
 
+        delete_button = view.findViewById(R.id.deleteButton);
+        sharebutton=view.findViewById(R.id.shareButton);
+        randomButton=view.findViewById(R.id.randomButton);
 
         Random mRandom = new Random();
         int baseColor = Color.WHITE;
@@ -95,6 +98,12 @@ public  class Frag4 extends  Fragment  implements IOnBackPressed{
             delete_button.getBackground().setAlpha(255);
             delete_button.setBackground(draw);
 
+            sharebutton.getBackground().setAlpha(255);
+            sharebutton.setBackground(draw);
+
+            randomButton.getBackground().setAlpha(255);
+            randomButton.setBackground(draw);
+
         }else{
 
             name_input.setBackground(draw);
@@ -108,20 +117,22 @@ public  class Frag4 extends  Fragment  implements IOnBackPressed{
         }
 
 
-
-
-
-
         delete_button.setAlpha(0f);
         delete_button.setTranslationY(5);
         delete_button.animate().alpha(1f).translationYBy(-5).setDuration(300);
 
+        randomButton.setAlpha(0f);
+        randomButton.setTranslationY(5);
+        randomButton.animate().alpha(1f).translationYBy(-5).setDuration(300);
+
+        sharebutton.setAlpha(0f);
+        sharebutton.setTranslationY(5);
+        sharebutton.animate().alpha(1f).translationYBy(-5).setDuration(300);
 
 
         //First we call this
         savedInstanceState=this.getArguments();
         getAndSetIntentData(savedInstanceState);
-
 
 
         delete_button.setOnClickListener(new View.OnClickListener() {
@@ -133,9 +144,35 @@ public  class Frag4 extends  Fragment  implements IOnBackPressed{
 
         });
 
+        sharebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent shareIntent =   new Intent(android.content.Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT,name_input.getText().toString());
+                String app_url = " https://play.google.com/store/apps/details?id=my.example.javatpoint";
+                if(text_input.getText().toString().length()>0){
+                    app_url=text_input.getText().toString();
+                }
+                shareIntent.putExtra(android.content.Intent.EXTRA_TEXT,app_url);
+                startActivity(Intent.createChooser(shareIntent, "Share via"));
+            }
+        });
 
 
-        requireActivity().getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
+        randomButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                text_input.setText(text_input.getText().toString()+"!!!!");
+            }
+
+        });
+
+
+
+
+    requireActivity().getOnBackPressedDispatcher().addCallback(new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {
                 if (text_input.length() > 0 || name_input.length()>0) {
@@ -182,9 +219,9 @@ public  class Frag4 extends  Fragment  implements IOnBackPressed{
 
     void confirmDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-        builder.setTitle("Delete " + name + " ?");
-        builder.setMessage("Are you sure you want to delete " + name + " ?");
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setTitle("למחוק " + name + " ?");
+        builder.setMessage("בטוח למחוק את " + name + " ?");
+        builder.setPositiveButton("כן", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 MyDatabaseHelper myDB = new MyDatabaseHelper(getContext());
@@ -192,7 +229,7 @@ public  class Frag4 extends  Fragment  implements IOnBackPressed{
                 changefragment();
             }
         });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton("לא", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
 

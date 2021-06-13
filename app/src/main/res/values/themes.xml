@@ -7,7 +7,7 @@
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary2</item>
         <item name="colorAccent">@color/accent</item>
-        <item name="backgroundcolor">@color/primary</item>
+        <item name="backgroundcolor">@color/primary2</item>
         <item name="cardbackgroundcolor">@color/white</item>
         <item name="textcolor">@color/fiveth</item>
         <item name="tintcolor">@color/fiveth</item>
@@ -23,7 +23,7 @@
         <item name="colorPrimary">#212121</item>
         <item name="colorPrimaryDark">#000000</item>
         <item name="colorAccent">@color/accent</item>
-        <item name="backgroundcolor">#000000</item>
+        <item name="backgroundcolor">@color/first</item>
         <item name="cardbackgroundcolor">#424242</item>
         <item name="textcolor">@color/fiveth</item>
         <item name="tintcolor">@color/white</item>

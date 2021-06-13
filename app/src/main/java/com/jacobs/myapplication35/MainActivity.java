@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
              setTheme(R.style.LIGHT);
         }
 
-
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
        // AppBarLayout toolbar = (AppBarLayout) findViewById(R.id.appbarid);
