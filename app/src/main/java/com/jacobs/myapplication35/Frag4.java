@@ -204,9 +204,7 @@ public  class Frag4 extends  Fragment  implements IOnBackPressed{
             name = bundle.getString("name");
             lyric = bundle.getString("text");
 
-            System.out.println(id);
-            System.out.println(name);
-            System.out.println(lyric);
+
 
             //Setting Intent Data
             name_input.setText(name);

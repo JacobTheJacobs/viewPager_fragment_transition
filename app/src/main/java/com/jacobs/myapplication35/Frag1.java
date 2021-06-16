@@ -122,7 +122,7 @@ public  class  Frag1  extends  Fragment {
                     lyric_text.add(cursor.getString(2));
 
 
-                System.out.println(lyric_text);
+
                 String temp = cursor.getString(3);
                 SimpleDateFormat dateFormat = new SimpleDateFormat(
                         "yyyy-MM-dd HH:mm:ss", Locale.getDefault());

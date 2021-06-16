@@ -14,22 +14,28 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import android.widget.Switch;
+import android.widget.Toast;
 
 
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     private Switch mySwitch;
-
 
 
 
@@ -70,12 +76,9 @@ public class MainActivity extends AppCompatActivity {
         //setSupportActionBar(toolbar);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout);
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
-        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
+        tabLayout.addTab(tabLayout.newTab().setText("חרוזים"));
+        tabLayout.addTab(tabLayout.newTab().setText("כתיבה"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
-
-
-
 
 
         //VIEWPAGER
@@ -96,10 +99,6 @@ public class MainActivity extends AppCompatActivity {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
-
-
-
-
 
 
 
@@ -167,11 +166,6 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
-
-
-
-
-
 /*
         if (id == R.id.settings) {
             Toast.makeText(this, "Setting", Toast.LENGTH_LONG).show();
@@ -180,4 +174,8 @@ public class MainActivity extends AppCompatActivity {
 */
         return super.onOptionsItemSelected(item);
     }
+
+
+
+
 }
