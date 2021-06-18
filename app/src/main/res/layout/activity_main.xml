@@ -58,6 +58,7 @@
                 android:layout_below="@+id/appbarid"
                 android:background="?attr/colorPrimary"
                 android:elevation="6dp"
+                app:tabTextAppearance="@style/MineCustomTabText"
                 android:minHeight="?attr/actionBarSize"
                 android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
                 app:tabIndicatorColor="?attr/fabcolor"
